@@ -1,0 +1,10 @@
+[Unit]
+Description=escluster
+
+[Service]
+ExecStart=/usr/bin/docker run -rm -name escluster-node-b -p 9300:9300 -p 9200:9200 clausa/ubuntu:13.10/elasticsearch:1.0.1
+ExecStop=/usr/bin/docker kill escluster-node-b
+
+[X-Fleet]
+X-Conflicts=escluster.*.service
+
